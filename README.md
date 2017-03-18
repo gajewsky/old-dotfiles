@@ -1,13 +1,17 @@
 # dotfiles
+inspired by https://github.com/holman/dotfiles]
 
 ## install
 
 Run this:
 
 ```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
+git clone https://github.com/gajewsky/dotfiles.git ~/.dotfiles
+
 cd ~/.dotfiles
+
 script/install
+
 script/bootstrap
 ```
 
