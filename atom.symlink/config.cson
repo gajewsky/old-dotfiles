@@ -20,9 +20,11 @@
       "monokai-seti"
     ]
   editor:
-    fontSize: 11
+    fontSize: 13
     preferredLineLength: 99
     showInvisibles: true
+  esformatter:
+    formatOnSave: true
   "exception-reporting":
     userId: "4596e72b-a12a-2e35-2c7e-700f6db3b7c6"
   "hit-stats":

@@ -1,5 +1,5 @@
 # dotfiles
-inspired by https://github.com/holman/dotfiles]
+inspired by https://github.com/holman/dotfiles
 
 ## install
 

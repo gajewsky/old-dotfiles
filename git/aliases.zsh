@@ -12,8 +12,9 @@ alias ga='git add'
 alias gaa='git add --all'
 
 alias gl='git pull'
+alias ggl='git pull origin $(git-branch-current)'
 
-alias glo="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glo="git log --oneline --decorate --graph --all"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 alias gss='git status -s'
