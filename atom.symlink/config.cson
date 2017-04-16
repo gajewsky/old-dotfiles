@@ -20,7 +20,7 @@
       "monokai-seti"
     ]
   editor:
-    fontSize: 16
+    fontSize: 15
     preferredLineLength: 99
     showInvisibles: true
   esformatter: {}
