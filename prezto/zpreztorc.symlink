@@ -35,14 +35,13 @@ zstyle ':prezto:load' pmodule \
   'ruby' \
   'rails' \
   'git' \
+  'tmux' \
+  'archive' \
+  'command-not-found' \
+  'autosuggestions' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt' \
-  'tmux' \
-  'autosuggestions' \
-  'command-not-found' \
-  'archive' \
-  'gpg' \
 
 
 #
@@ -148,8 +147,8 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 # Set syntax highlighting styles.
 zstyle ':prezto:module:syntax-highlighting' styles \
   'builtin' 'bg=blue' \
-  'command' 'bg=blue' \
-  'function' 'bg=blue'
+  'command' 'bg=green' \
+  'function' 'bg=orange'
 
 #
 # Terminal
