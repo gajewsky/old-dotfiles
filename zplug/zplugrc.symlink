@@ -1,0 +1,37 @@
+source ~/.zplug/init.zsh
+
+zplug "modules/git", from:prezto
+zplug "modules/prompt", from:prezto
+zstyle ':prezto:module:prompt' theme 'kylewest'
+
+zplug "zsh-users/zsh-completions"
+zplug "tarruda/zsh-autosuggestions",            defer:1
+zplug "zsh-users/zsh-syntax-highlighting",      defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
+
+zplug "djui/alias-tips"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+zplug load
+
+if zplug check zsh-users/zsh-autosuggestions; then
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+fi
+
+
+KEYTIMEOUT=1
+bindkey -v
+
+if zplug check zsh-users/zsh-history-substring-search; then
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+fi
