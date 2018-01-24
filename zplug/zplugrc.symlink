@@ -11,7 +11,7 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 
 zplug "djui/alias-tips"
 
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
