@@ -1,15 +1,27 @@
-source ~/.zplug/init.zsh
 
-zplug "modules/git", from:prezto
-zplug "modules/prompt", from:prezto
-zstyle ':prezto:module:prompt' theme 'kylewest'
+#Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+else
+  source ~/.zplug/init.zsh
+fi
 
+
+zplug "plugins/git",      from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug "tarruda/zsh-autosuggestions",            defer:1
 zplug "zsh-users/zsh-syntax-highlighting",      defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 
 zplug "djui/alias-tips"
+zplug "mafredri/zsh-async", from:github
+
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+PURE_CMD_MAX_EXEC_TIME=1
+
+zplug 'Seinh/git-prune'
 
 if ! zplug check; then
     printf "Install? [y/N]: "
