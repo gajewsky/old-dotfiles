@@ -1,0 +1,9 @@
+[user]
+  email = marcin.gajewski@rebased.pl
+  name = gajewsky
+[color]
+  ui = true
+[diff]
+  colorMoved = zebra
+[alias]
+  co = checkout

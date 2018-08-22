@@ -42,6 +42,7 @@ compinit
 source /usr/share/chruby/chruby.sh
 source /usr/share/chruby/auto.sh
 source /usr/share/gem_home/gem_home.sh
+source ~/.bin/tmuxinator.zsh
 source $HOME/.zplugrc
 
 export NVM_DIR="$HOME/.nvm"
@@ -58,8 +59,4 @@ hitch() {
   if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
 }
 alias unhitch='hitch -u'
-
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
-
+bindkey -s '^[^M' 'git status\n'

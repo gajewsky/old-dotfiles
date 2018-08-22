@@ -13,6 +13,7 @@ zplug "zsh-users/zsh-completions"
 zplug "tarruda/zsh-autosuggestions",            defer:1
 zplug "zsh-users/zsh-syntax-highlighting",      defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "tj/git-extras"
 
 zplug "djui/alias-tips"
 zplug "mafredri/zsh-async", from:github
@@ -41,7 +42,7 @@ fi
 
 
 KEYTIMEOUT=1
-bindkey -v
+bindkey -e
 
 if zplug check zsh-users/zsh-history-substring-search; then
     bindkey '^[[A' history-substring-search-up
