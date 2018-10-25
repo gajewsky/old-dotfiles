@@ -1,9 +1,24 @@
-[user]
-  email = marcin.gajewski@rebased.pl
-  name = gajewsky
-[color]
-  ui = true
-[diff]
-  colorMoved = zebra
 [alias]
   co = checkout
+
+[color]
+  ui = true
+
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+
+[diff]
+  algorithm = patience
+  colorMoved = zebra
+
+  [github]
+    user = gajewsky
+
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+
+[user]
+  email = code@marcingajew.ski
+  name = Marcin Gajewski

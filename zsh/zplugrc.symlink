@@ -7,20 +7,14 @@ else
   source ~/.zplug/init.zsh
 fi
 
-
 zplug "plugins/git",      from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug "tarruda/zsh-autosuggestions",            defer:1
 zplug "zsh-users/zsh-syntax-highlighting",      defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "tj/git-extras"
-
 zplug "djui/alias-tips"
-zplug "mafredri/zsh-async", from:github
-
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-
-PURE_CMD_MAX_EXEC_TIME=1
+zplug "geometry-zsh/geometry"
 
 zplug 'Seinh/git-prune'
 
@@ -39,7 +33,6 @@ if zplug check zsh-users/zsh-autosuggestions; then
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
 fi
-
 
 KEYTIMEOUT=1
 bindkey -e

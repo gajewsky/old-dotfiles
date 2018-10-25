@@ -38,25 +38,13 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-
 source /usr/share/chruby/chruby.sh
 source /usr/share/chruby/auto.sh
-source /usr/share/gem_home/gem_home.sh
-source ~/.bin/tmuxinator.zsh
-source $HOME/.zplugrc
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source $HOME/.zplugrc
+setopt HIST_IGNORE_SPACE
+
+bindkey -s '^[^M' 'git status\n'
+source /usr/share/nvm/init-nvm.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Add the following to your ~/.bashrc or ~/.zshrc
-#
-# Alternatively, copy/symlink this file and source in your shell.  See `hitch --setup-path`.
-
-hitch() {
-  command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-}
-alias unhitch='hitch -u'
-bindkey -s '^[^M' 'git status\n'

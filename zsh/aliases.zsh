@@ -6,8 +6,12 @@ alias serve='python -m http.server'
 unsetopt auto_pushd
 unsetopt pushd_ignore_dups
 
-alias md='mkdir -p'
-alias rd=rmdir
-alias d='dirs -v | head -10'
-
 alias l='ls++'
+alias cat='bat'
+alias ping='./prettyping --nolegend'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+
+# Not add to history
+alias t=' trans'
+alias ag=' ag'

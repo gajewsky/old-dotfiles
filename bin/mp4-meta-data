@@ -1,0 +1,8 @@
+for i in *;
+ do
+ name=`echo $i | sed 's/[^ ]\+/\L\u&/g' | sed 's/^[0-9]\+ //'`;
+ echo $name;
+
+ AtomicParsley "$i" --title "${name}" --overWrite
+
+ done
