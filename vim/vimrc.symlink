@@ -1,22 +1,106 @@
+call plug#begin('~/.vim/plugged')
+  Plug 'morhetz/gruvbox'
+  Plug 'daylerees/colour-schemes'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-commentary'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'edkolev/tmuxline.vim'
+call plug#end()
+
+
+" ================ General Config ====================
+
+set number
+set timeout timeoutlen=1000
+let mapleader=","
+syntax on
+runtime macros/matchit.vim
+
+ " ================ Turn Off Swap Files ==============
+
+set noswapfile
+set nobackup
+set nowb
+
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+filetype plugin indent on
+filetype plugin on
+filetype indent on
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
+set linebreak "Wrap lines at convenient points
+
+" ================ FZF ===============================
+
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+map <C-p> :call FzfFiles()<CR>
+map <C-b> :Buffers<CR>
+map <C-g> :Ag<CR>
+map <C-l> :Lines<CR>
+
+nnoremap <leader>f :Files <CR>
+
+fun! FzfFiles()
+  let is_git = system('git status')
+  if v:shell_error
+    :Files
+  else
+    :GFiles
+  endif
+endfun
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-x': 'vsplit' }
+
+" ================ Theme =============================
+
+set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let g:powerline_loaded = 1
+let g:gruvbox_terminal_colors = 1
+colo gruvbox
+let g:airline_theme='gruvbox'
+set background=dark
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-call plug#begin('~/.vim/plugged')
-  Plug 'tpope/vim-rails'
-  Plug 'morhetz/gruvbox'
-  Plug 'daylerees/colour-schemes'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-call plug#end()
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let g:powerline_loaded = 1
-let g:gruvbox_terminal_colors = 1
-colo gruvbox
-set background=dark
-set number
-map <C-p> :FZF<CR>
+imap jk <esc>
+imap kj <esc>
+imap <C-s> <esc>:w<cr>
