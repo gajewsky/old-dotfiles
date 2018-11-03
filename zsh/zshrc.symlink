@@ -1,6 +1,9 @@
 export ZSH=$HOME/.dotfiles
 export PROJECTS=~/Projects
 
+bindkey -e
+bindkey -s '^[^M' 'git status\n'
+
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
@@ -25,11 +28,18 @@ done
 
 unset config_files
 
+source /usr/share/chruby/chruby.sh
+source /usr/share/chruby/auto.sh
+source $HOME/.zplugrc
+source /usr/share/nvm/init-nvm.sh
+source ~/.bin/tmuxinator.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-bindkey -e
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/$HOME/.zshrc'
@@ -38,13 +48,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source /usr/share/chruby/chruby.sh
-source /usr/share/chruby/auto.sh
-
-source $HOME/.zplugrc
 setopt HIST_IGNORE_SPACE
 
-bindkey -s '^[^M' 'git status\n'
-source /usr/share/nvm/init-nvm.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Default ruby version
+chruby 2.5.2
