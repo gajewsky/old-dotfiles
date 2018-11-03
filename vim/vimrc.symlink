@@ -12,8 +12,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'edkolev/tmuxline.vim'
+  Plug 'airblade/vim-gitgutter'
 call plug#end()
-
 
 " ================ General Config ====================
 
@@ -56,30 +56,29 @@ filetype plugin indent on
 filetype plugin on
 filetype indent on
 
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-
+set list listchars=tab:\ \ ,trail:· "Display tabs and trailing spaces visually
 set linebreak "Wrap lines at convenient points
 
 " ================ FZF ===============================
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-map <C-p> :call FzfFiles()<CR>
-map <C-b> :Buffers<CR>
-map <C-g> :Ag<CR>
-map <C-l> :Lines<CR>
-
-nnoremap <leader>f :Files <CR>
-
-fun! FzfFiles()
-  let is_git = system('git status')
-  if v:shell_error
-    :Files
-  else
-    :GFiles
-  endif
-endfun
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>h :History<CR>
+nmap <Leader>t :BTags<CR>
+nmap <Leader>T :Tags<CR>
+nmap <Leader>l :BLines<CR>
+nmap <Leader>L :Lines<CR>
+nmap <Leader>' :Marks<CR>
+nmap <Leader>a :Ag<Space>
+nmap <Leader>H :Helptags!<CR>
+nmap <Leader>C :Commands<CR>
+nmap <Leader>: :History:<CR>
+nmap <Leader>/ :History/<CR>
+nmap <Leader>M :Maps<CR>
+nmap <Leader>s :Filetypes<CR>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -95,6 +94,9 @@ let g:gruvbox_terminal_colors = 1
 colo gruvbox
 let g:airline_theme='gruvbox'
 set background=dark
+let g:airline_powerline_fonts=1
+
+" ================ Navigation ========================
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -104,3 +106,14 @@ nnoremap <C-H> <C-W><C-H>
 imap jk <esc>
 imap kj <esc>
 imap <C-s> <esc>:w<cr>
+
+" Automatically strip whitespaces
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let _s=@/
+  call cursor(l, c)
+  let @/=_s
+endfun
+autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
