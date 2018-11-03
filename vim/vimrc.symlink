@@ -22,7 +22,8 @@ set timeout timeoutlen=1000
 let mapleader=","
 syntax on
 runtime macros/matchit.vim
-
+set mouse=a
+set mouse&
  " ================ Turn Off Swap Files ==============
 
 set noswapfile
