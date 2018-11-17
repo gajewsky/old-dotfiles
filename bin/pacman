@@ -1,4 +1,7 @@
-pacman -S bat fzf htop diff-so-fancy fd ncdu
+if test ! $(which pacman)
+then
+  pacman -S bat fzf htop diff-so-fancy fd ncdu
+fi
 
 
 curl -O https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping
