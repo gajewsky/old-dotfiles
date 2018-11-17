@@ -13,17 +13,24 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline-themes'
   Plug 'edkolev/tmuxline.vim'
   Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-repeat'
+  Plug 'slim-template/vim-slim'
+  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'ncm2/ncm2'
+  Plug 'roxma/nvim-yarp'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'bogado/file-line'
 call plug#end()
 
 " ================ General Config ====================
 
-set number
+set number relativenumber
+
 set timeout timeoutlen=1000
 let mapleader=","
 syntax on
 runtime macros/matchit.vim
 set mouse=a
-set mouse&
  " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -96,6 +103,7 @@ colo gruvbox
 let g:airline_theme='gruvbox'
 set background=dark
 let g:airline_powerline_fonts=1
+let &colorcolumn="99".join(range(99,999),",") "Ruller
 
 " ================ Navigation ========================
 
