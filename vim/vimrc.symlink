@@ -21,7 +21,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'bogado/file-line'
 call plug#end()
-
 " ================ General Config ====================
 
 set number relativenumber
@@ -104,8 +103,13 @@ let g:airline_theme='gruvbox'
 set background=dark
 let g:airline_powerline_fonts=1
 let &colorcolumn="99".join(range(99,999),",") "Ruller
+set list listchars=tab:»·,trail:· " Display extra whitespace
 
 " ================ Navigation ========================
+
+" Emacs-like beginning and end of line.
+imap <c-e> <c-o>$
+imap <c-a> <c-o>^
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -114,7 +118,9 @@ nnoremap <C-H> <C-W><C-H>
 
 imap jk <esc>
 imap kj <esc>
-imap <C-s> <esc>:w<cr>
+imap <C-s> <esc>:w<CR>
+map <C-s> <esc>:w<CR>
+map <C-t> <esc>:tabnew<CR>
 
 " Automatically strip whitespaces
 fun! <SID>StripTrailingWhitespaces()
@@ -126,3 +132,14 @@ fun! <SID>StripTrailingWhitespaces()
   let @/=_s
 endfun
 autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
+
+fun! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfun
+map <Leader>rename :call RenameFile()<cr>
