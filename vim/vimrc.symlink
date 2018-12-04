@@ -1,28 +1,48 @@
 call plug#begin('~/.vim/plugged')
-  Plug 'morhetz/gruvbox'
-  Plug 'daylerees/colour-schemes'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
+  " Ruby
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-endwisee'
+
+  " Git
+  Plug 'tpope/vim-git'
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-commentary'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'edkolev/tmuxline.vim'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'tpope/vim-repeat'
+  Plug 'mhinz/vim-signify' "Show a diff using Vim its sign column
+  Plug 'danishprakash/vim-githubinator' "Show selected text in Vim on Github
+
+  " Syntax highlighting
   Plug 'slim-template/vim-slim'
   Plug 'mustache/vim-mustache-handlebars'
-  Plug 'ncm2/ncm2'
-  Plug 'roxma/nvim-yarp'
+
+  " Theme
+  Plug 'morhetz/gruvbox'
+  Plug 'edkolev/tmuxline.vim'
+  Plug 'vim-airline/vim-airline'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
-  Plug 'bogado/file-line'
+
+  " File Navigation
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
+  Plug 'kristijanhusak/vim-dirvish-git'
+  Plug 'bogado/file-line' "Open a file in a given line
+
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-speeddating'
+  Plug 'tpope/vim-repeat'
+  Plug 'unblevable/quick-scope' "Lightning fast left-right movement in Vim
+  Plug 'w0rp/ale'
+  Plug 'justincampbell/vim-eighties' "Automatically resizes your windows
+  Plug 'junegunn/vim-easy-align'
 call plug#end()
+
 " ================ General Config ====================
 
+set nocompatible
 set number relativenumber
 
 set timeout timeoutlen=1000
@@ -96,14 +116,19 @@ let g:fzf_action = {
 
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let g:powerline_loaded = 1
+set background=dark
 let g:gruvbox_terminal_colors = 1
 colo gruvbox
+
+let g:powerline_loaded = 1
 let g:airline_theme='gruvbox'
-set background=dark
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 let &colorcolumn="99".join(range(99,999),",") "Ruller
 set list listchars=tab:»·,trail:· " Display extra whitespace
+let g:eighties_enabled = 1
+let g:eighties_minimum_width = 99
 
 " ================ Navigation ========================
 
@@ -116,11 +141,19 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nmap ga <Plug>(EasyAlign)
+
 imap jk <esc>
 imap kj <esc>
 imap <C-s> <esc>:w<CR>
 map <C-s> <esc>:w<CR>
 map <C-t> <esc>:tabnew<CR>
+
+map <leader>p :bp<CR> " ,p previous buffer
+map <leader>n :bn<CR> " ,n next buffer
+map <leader>d :bd<CR> " ,d delete buffer
+
+" ================ Functions =========================
 
 " Automatically strip whitespaces
 fun! <SID>StripTrailingWhitespaces()
@@ -133,13 +166,3 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
 
-fun! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'), 'file')
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
-endfun
-map <Leader>rename :call RenameFile()<cr>
