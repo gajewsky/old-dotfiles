@@ -1,6 +1,6 @@
 if test ! $(which pacman)
 then
-  pacman -S bat fzf htop diff-so-fancy fd ncdu
+  pacman -S bat fzf htop diff-so-fancy fd ncdu exa
 fi
 
 

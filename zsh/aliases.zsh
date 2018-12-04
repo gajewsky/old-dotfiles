@@ -7,7 +7,8 @@ alias serve='python -m http.server'
 unsetopt auto_pushd
 unsetopt pushd_ignore_dups
 
-alias l='ls++'
+alias ls='exa'
+alias tree='exa -T'
 alias cat='bat'
 alias ping='./prettyping --nolegend'
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"

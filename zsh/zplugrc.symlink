@@ -15,7 +15,8 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "tj/git-extras"
 zplug "djui/alias-tips"
 zplug "geometry-zsh/geometry"
-
+zplug "rupa/z"
+zplug "akavel/up"
 zplug 'Seinh/git-prune'
 
 if ! zplug check; then
