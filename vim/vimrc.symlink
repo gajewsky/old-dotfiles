@@ -8,26 +8,31 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-git'
   Plug 'tpope/vim-fugitive'
   Plug 'mhinz/vim-signify' "Show a diff using Vim its sign column
+  Plug 'junegunn/gv.vim' "A git commit browser
+
   Plug 'danishprakash/vim-githubinator' "Show selected text in Vim on Github
 
   " Syntax highlighting
   Plug 'slim-template/vim-slim'
   Plug 'mustache/vim-mustache-handlebars'
-
+  Plug 'Chiel92/vim-autoformat'
   " Theme
   Plug 'morhetz/gruvbox'
   Plug 'edkolev/tmuxline.vim'
-  Plug 'vim-airline/vim-airline'
+  Plug 'itchyny/lightline.vim'
+  Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'ryanoasis/vim-devicons'
 
   " File Navigation
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
   Plug 'kristijanhusak/vim-dirvish-git'
   Plug 'bogado/file-line' "Open a file in a given line
   Plug 'tpope/vim-surround'
-
+  Plug 'tpope/vim-rsi'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
@@ -38,13 +43,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'w0rp/ale'
   Plug 'justincampbell/vim-eighties' "Automatically resizes your windows
   Plug 'junegunn/vim-easy-align'
+  Plug 'rstacruz/vim-closer'
 call plug#end()
 
 " ================ General Config ====================
 
 set nocompatible
 set number relativenumber
-
 set timeout timeoutlen=1000
 let mapleader=","
 syntax on
@@ -87,30 +92,7 @@ set list listchars=tab:\ \ ,trail:· "Display tabs and trailing spaces visually
 set linebreak "Wrap lines at convenient points
 
 " ================ FZF ===============================
-
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
-nmap <Leader>f :GFiles<CR>
-nmap <Leader>F :Files<CR>
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>h :History<CR>
-nmap <Leader>t :BTags<CR>
-nmap <Leader>T :Tags<CR>
-nmap <Leader>l :BLines<CR>
-nmap <Leader>L :Lines<CR>
-nmap <Leader>' :Marks<CR>
-nmap <Leader>a :Ag<Space>
-nmap <Leader>H :Helptags!<CR>
-nmap <Leader>C :Commands<CR>
-nmap <Leader>: :History:<CR>
-nmap <Leader>/ :History/<CR>
-nmap <Leader>M :Maps<CR>
-nmap <Leader>s :Filetypes<CR>
-
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-x': 'vsplit' }
+source $HOME/.vim/fzf.vim
 
 " ================ Theme =============================
 
@@ -121,9 +103,9 @@ let g:gruvbox_terminal_colors = 1
 colo gruvbox
 
 let g:powerline_loaded = 1
-let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ }
 
 let &colorcolumn="99".join(range(99,999),",") "Ruller
 set list listchars=tab:»·,trail:· " Display extra whitespace
@@ -132,26 +114,16 @@ let g:eighties_minimum_width = 99
 
 " ================ Navigation ========================
 
-" Emacs-like beginning and end of line.
-imap <c-e> <c-o>$
-imap <c-a> <c-o>^
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 nmap ga <Plug>(EasyAlign)
 
 imap jk <esc>
 imap kj <esc>
-imap <C-s> <esc>:w<CR>
-map <C-s> <esc>:w<CR>
-map <C-t> <esc>:tabnew<CR>
 
-map <leader>p :bp<CR> " ,p previous buffer
-map <leader>n :bn<CR> " ,n next buffer
-map <leader>d :bd<CR> " ,d delete buffer
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <ESC>:update<CR>l
+
+map <C-t> <esc>:tabnew<CR>
 
 " ================ Functions =========================
 

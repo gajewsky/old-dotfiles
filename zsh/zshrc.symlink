@@ -1,5 +1,6 @@
 export ZSH=$HOME/.dotfiles
 export PROJECTS=~/Projects
+export BAT_THEME="gruvbox"
 
 # all of our zsh files
 typeset -U config_files
