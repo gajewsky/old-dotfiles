@@ -1,7 +1,3 @@
-export ZSH=$HOME/.dotfiles
-export PROJECTS=~/Projects
-export BAT_THEME="gruvbox"
-
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)
@@ -27,8 +23,6 @@ done
 unset config_files
 
 source $HOME/.zplugrc
-source /usr/share/nvm/init-nvm.sh
-
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/$HOME/.zshrc'

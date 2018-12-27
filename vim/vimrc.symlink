@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'slim-template/vim-slim'
   Plug 'mustache/vim-mustache-handlebars'
   Plug 'Chiel92/vim-autoformat'
+
   " Theme
   Plug 'morhetz/gruvbox'
   Plug 'edkolev/tmuxline.vim'
@@ -49,12 +50,14 @@ call plug#end()
 " ================ General Config ====================
 
 set nocompatible
+set gdefault
 set number relativenumber
 set timeout timeoutlen=1000
 let mapleader=","
 syntax on
 runtime macros/matchit.vim
 set mouse=a
+
  " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -111,7 +114,20 @@ let &colorcolumn="99".join(range(99,999),",") "Ruller
 set list listchars=tab:»·,trail:· " Display extra whitespace
 let g:eighties_enabled = 1
 let g:eighties_minimum_width = 99
+" let terminal resize scale the internal windows
+autocmd VimResized * :wincmd =
 
+" Use arrow keys to resize windows
+noremap <up>    <C-W>+
+noremap <down>  <C-W>-
+noremap <left>  3<C-W><
+noremap <right> 3<C-W>>
+
+set splitbelow        " new hoz splits go below
+set splitright        " new vert splits go right
+
+" prefer vertical orientation when using :diffsplit
+set diffopt+=vertical
 " ================ Navigation ========================
 
 nmap ga <Plug>(EasyAlign)
@@ -125,6 +141,32 @@ inoremap <C-S> <ESC>:update<CR>l
 
 map <C-t> <esc>:tabnew<CR>
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Re-select visual block after indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Keep search matches in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+
+nmap <Leader><Space> :nohl<cr>
+
+" go substitute because the default map for sleeping is silly
+nnoremap gs :%s//<Left>
+
+nnoremap <NL> i<CR><ESC>
+
+" Highlight merge conflict markers
+match Todo '\v^(\<|\=|\>){7}([^=].+)?$'
+
+" Jump to next/previous merge conflict marker
+nnoremap <silent> ]c /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
+nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+
 " ================ Functions =========================
 
 " Automatically strip whitespaces
@@ -137,4 +179,3 @@ fun! <SID>StripTrailingWhitespaces()
   let @/=_s
 endfun
 autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
-
