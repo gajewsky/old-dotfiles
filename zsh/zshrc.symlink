@@ -28,7 +28,6 @@ unset config_files
 
 source $HOME/.zplugrc
 source /usr/share/nvm/init-nvm.sh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
