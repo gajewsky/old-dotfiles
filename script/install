@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 #
-# Run all dotfiles installers.
 
+sudo pacman -S --needed - < "$(dirname -- "$0")/pkglist"
+yay -S --needed - < "$(dirname -- "$0")/foreignpkglist"
+
+# Run all dotfiles installers.
 set -e
 
 cd "$(dirname $0)"/..
@@ -9,6 +12,4 @@ cd "$(dirname $0)"/..
 # find the installers and run them iteratively
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
-pacman -S --needed - < pkglist
-pacman -S --needed - < foreignpkglist
 
