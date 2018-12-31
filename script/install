@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 #
 
-sudo pacman -S --needed - < "$(dirname -- "$0")/pkglist"
-yay -S --needed - < "$(dirname -- "$0")/foreignpkglist"
-
 # Run all dotfiles installers.
 set -e
 
