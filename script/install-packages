@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #
+pacman -Suy
 pacman -S --needed - < "$(dirname -- "$0")/packages/pkglist"

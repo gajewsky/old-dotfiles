@@ -12,7 +12,7 @@ cd ~/.dotfiles
 ```
 
 ```sh
-(optional)
+(optional for fresh installed arch based distros)
 
 sudo script/install-packages
 
