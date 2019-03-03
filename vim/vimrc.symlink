@@ -155,7 +155,175 @@ nnoremap N Nzz
 
 nmap <Leader><Space> :nohl<cr>
 
-" go substitute because the default map for sleeping is silly
+" " go substitute because the default map for sleeping is silly
+nnoremap gs :%s//<Left>
+
+nnoremap <NL> i<CR><ESC>
+
+" Highlight merge conflict markers
+match Todo '\v^(\<|\=|\>){7}([^=].+)?$'
+
+" Jump to next/previous merge conflict marker
+nnoremap <silent> ]c /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
+call plug#begin('~/.vim/plugged')
+  " Ruby
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-endwisee'
+
+  " Git
+  Plug 'tpope/vim-git'
+  Plug 'tpope/vim-fugitive'
+  Plug 'mhinz/vim-signify' "Show a diff using Vim its sign column
+  Plug 'junegunn/gv.vim' "A git commit browser
+
+  Plug 'danishprakash/vim-githubinator' "Show selected text in Vim on Github
+
+  " Syntax highlighting
+  Plug 'slim-template/vim-slim'
+  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'Chiel92/vim-autoformat'
+  Plug 'machakann/vim-highlightedyank'
+
+  " Theme
+  Plug 'morhetz/gruvbox'
+  Plug 'edkolev/tmuxline.vim'
+  Plug 'itchyny/lightline.vim'
+  Plug 'shinchu/lightline-gruvbox.vim'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'ryanoasis/vim-devicons'
+
+  " File Navigation
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
+  Plug 'kristijanhusak/vim-dirvish-git'
+  Plug 'bogado/file-line' "Open a file in a given line
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-rsi'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-speeddating'
+  Plug 'tpope/vim-repeat'
+  Plug 'unblevable/quick-scope' "Lightning fast left-right movement in Vim
+  Plug 'w0rp/ale'
+  Plug 'justincampbell/vim-eighties' "Automatically resizes your windows
+  Plug 'junegunn/vim-easy-align'
+  Plug 'rstacruz/vim-closer'
+call plug#end()
+
+" ================ General Config ====================
+
+set nocompatible
+set gdefault
+set number relativenumber
+set timeout timeoutlen=1000
+let mapleader=","
+syntax on
+runtime macros/matchit.vim
+set mouse=a
+
+ " ================ Turn Off Swap Files ==============
+
+set noswapfile
+set nobackup
+set nowb
+
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+filetype plugin indent on
+filetype plugin on
+filetype indent on
+
+set list listchars=tab:\ \ ,trail:· "Display tabs and trailing spaces visually
+set linebreak "Wrap lines at convenient points
+
+" ================ FZF ===============================
+source $HOME/.vim/fzf.vim
+
+" ================ Theme =============================
+
+set termguicolors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=dark
+let g:gruvbox_terminal_colors = 1
+colo gruvbox
+
+let g:powerline_loaded = 1
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ }
+
+let &colorcolumn="99".join(range(99,999),",") "Ruller
+set list listchars=tab:»·,trail:· " Display extra whitespace
+let g:eighties_enabled = 1
+let g:eighties_minimum_width = 99
+" let terminal resize scale the internal windows
+autocmd VimResized * :wincmd =
+
+" Use arrow keys to resize windows
+noremap <up>    <C-W>+
+noremap <down>  <C-W>-
+noremap <left>  3<C-W><
+noremap <right> 3<C-W>>
+
+set splitbelow        " new hoz splits go below
+set splitright        " new vert splits go right
+
+" prefer vertical orientation when using :diffsplit
+set diffopt+=vertical
+" ================ Navigation ========================
+
+nmap ga <Plug>(EasyAlign)
+
+imap jk <esc>
+imap kj <esc>
+
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <ESC>:update<CR>l
+
+map <C-t> <esc>:tabnew<CR>
+
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Re-select visual block after indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Keep search matches in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+
+nmap <Leader><Space> :nohl<cr>
+
+" " go substitute because the default map for sleeping is silly
 nnoremap gs :%s//<Left>
 
 nnoremap <NL> i<CR><ESC>
@@ -166,6 +334,36 @@ match Todo '\v^(\<|\=|\>){7}([^=].+)?$'
 " Jump to next/previous merge conflict marker
 nnoremap <silent> ]c /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
 nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+
+" ================ Neovim ============================
+
+set inccommand=split
+
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
+
+" ================ Functions =========================
+
+" Automatically strip whitespaces
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let _s=@/
+  call cursor(l, c)
+  let @/=_s
+endfun
+autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
+nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+
+" ================ Neovim ============================
+
+set inccommand=split
+
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
 
 " ================ Functions =========================
 

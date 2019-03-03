@@ -32,3 +32,15 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+###-tns-completion-start-###
+if [ -f /home/gajewsky/.tnsrc ]; then 
+    source /home/gajewsky/.tnsrc 
+fi
+###-tns-completion-end-###
