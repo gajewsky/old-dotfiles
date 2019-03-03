@@ -18,6 +18,7 @@ zplug "geometry-zsh/geometry"
 zplug "rupa/z"
 zplug "akavel/up"
 zplug 'Seinh/git-prune'
+zplug "soimort/translate-shell"
 
 if ! zplug check; then
     printf "Install? [y/N]: "
