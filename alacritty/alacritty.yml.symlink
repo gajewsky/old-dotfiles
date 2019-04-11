@@ -23,11 +23,11 @@ font:
     style: Regular
 
   bold:
-    family: monaco
+    family: Monaco Nerd Font
     style: Bold
 
   italic:
-    family: monaco
+    family: Monaco Nerd Font
     style: Italic
 
   size: 11.0

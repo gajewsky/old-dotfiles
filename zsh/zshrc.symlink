@@ -40,7 +40,9 @@ compinit
 . $HOME/.asdf/completions/asdf.bash
 
 ###-tns-completion-start-###
-if [ -f /home/gajewsky/.tnsrc ]; then 
-    source /home/gajewsky/.tnsrc 
+if [ -f /home/gajewsky/.tnsrc ]; then
+    source /home/gajewsky/.tnsrc
 fi
 ###-tns-completion-end-###
+#
+export PATH=$PATH:~/bin
