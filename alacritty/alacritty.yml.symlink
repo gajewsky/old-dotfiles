@@ -102,8 +102,8 @@ cursor:
 live_config_reload: true
 
 key_bindings:
-  - { key: V,        mods: Control, action: Paste                        }
-  - { key: C,        mods: Control, action: Copy                         }
+  - { key: V,        mods: Control, action: Paste                  }
+  - { key: C,        mods: Control, action: Copy                   }
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
   - { key: Q,        mods: Command, action: Quit                         }

@@ -9,7 +9,7 @@ bind -n M-= select-layout even-horizontal
 bind -n M-+ select-layout even-vertical
 bind -n M-n next-window
 bind -n M-p previous-window
-set -g mouse on
+# set -g mouse on
 
 # select windows
 bind-key -n M-1 select-window -t:1

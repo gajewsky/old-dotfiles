@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-git'
   Plug 'tpope/vim-fugitive'
   " Plug 'mhinz/vim-signify' "Show a diff using Vim its sign column
-  Plug 'airblade/vim-gitgutter'
+  Plug 'mhinz/vim-signify'
   Plug 'junegunn/gv.vim' "A git commit browser
 
   Plug 'danishprakash/vim-githubinator' "Show selected text in Vim on Github
@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'slim-template/vim-slim'
   Plug 'mustache/vim-mustache-handlebars'
   Plug 'Chiel92/vim-autoformat'
+  Plug 'Valloric/MatchTagAlways'
 
   " Theme
   Plug 'morhetz/gruvbox'
@@ -30,6 +31,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'yuki-ycino/fzf-preview.vim'
+  Plug 'ryanoasis/vim-devicons'
   Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
   Plug 'kristijanhusak/vim-dirvish-git'
   Plug 'bogado/file-line' "Open a file in a given line
@@ -164,9 +166,11 @@ nnoremap <NL> i<CR><ESC>
 " Highlight merge conflict markers
 match Todo '\v^(\<|\=|\>){7}([^=].+)?$'
 
-" Jump to next/previous merge conflict marker
-nnoremap <silent> ]c /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
-nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> 0 g0
+noremap <silent> $ g$
+
 
 " ================ Neovim ============================
 
@@ -188,7 +192,6 @@ fun! <SID>StripTrailingWhitespaces()
   let @/=_s
 endfun
 autocmd BufWritePre *.* :call <SID>StripTrailingWhitespaces()
-nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
 
 " ================ Neovim ============================
 
