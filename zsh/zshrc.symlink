@@ -45,3 +45,4 @@ if [ -f /home/gajewsky/.tnsrc ]; then
 fi
 ###-tns-completion-end-###
 #
+stty `cat ~/.stty`

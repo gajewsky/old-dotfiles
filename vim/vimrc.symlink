@@ -131,6 +131,8 @@ set splitright        " new vert splits go right
 
 " prefer vertical orientation when using :diffsplit
 set diffopt+=vertical
+
+
 " ================ Navigation ========================
 
 nmap ga <Plug>(EasyAlign)
