@@ -1,16 +1,18 @@
 call plug#begin('~/.vim/plugged')
+  Plug 'takac/vim-hardtime'
   " Ruby
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-endwisee'
 
+  " JavaScript
+  Plug 'pangloss/vim-javascript'
+
   " Git
   Plug 'tpope/vim-git'
   Plug 'tpope/vim-fugitive'
-  " Plug 'mhinz/vim-signify' "Show a diff using Vim its sign column
-  Plug 'mhinz/vim-signify'
+  Plug 'mhinz/vim-signify' "Show a diff using Vim its sign column
   Plug 'junegunn/gv.vim' "A git commit browser
-
   Plug 'danishprakash/vim-githubinator' "Show selected text in Vim on Github
 
   " Syntax highlighting
@@ -45,9 +47,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'unblevable/quick-scope' "Lightning fast left-right movement in Vim
   Plug 'w0rp/ale'
+  Plug 'pbrisbin/vim-mkdir'
   Plug 'justincampbell/vim-eighties' "Automatically resizes your windows
   Plug 'junegunn/vim-easy-align'
   Plug 'rstacruz/vim-closer'
+  Plug 'mileszs/ack.vim'
+
 call plug#end()
 
 " ================ General Config ====================
@@ -173,6 +178,9 @@ noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
 
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
 
 " ================ Neovim ============================
 
