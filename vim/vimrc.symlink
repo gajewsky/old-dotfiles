@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
   " Ruby
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-endwisee'
+  Plug 'tpope/vim-endwise'
 
   " JavaScript
   Plug 'pangloss/vim-javascript'
@@ -11,45 +11,50 @@ call plug#begin('~/.vim/plugged')
   " Git
   Plug 'tpope/vim-git'
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'airblade/vim-gitgutter' "Show a diff using Vim its sign column
-  Plug 'junegunn/gv.vim' "A git commit browser
-  Plug 'danishprakash/vim-githubinator' "Show selected text in Vim on Github
+  Plug 'tpope/vim-rhubarb'                                          " Open GitHub source with :Gbrowse
+  Plug 'airblade/vim-gitgutter'                                     " Show a diff using Vim its sign column
+  Plug 'junegunn/gv.vim'                                            " A git commit browser
+  Plug 'danishprakash/vim-githubinator'                             " Show selected text in Vim on Github
 
   " Syntax highlighting
-  Plug 'slim-template/vim-slim'
-  Plug 'mustache/vim-mustache-handlebars'
   Plug 'Chiel92/vim-autoformat'
   Plug 'Valloric/MatchTagAlways'
+  Plug 'sheerun/vim-polyglot'                                       " Add syntax highlighting for a large range of filetypes
 
-  " Theme
-  Plug 'morhetz/gruvbox'
+  " Visual
+  Plug 'elzr/vim-json', {'for': 'json'}                             " Better syntax highlighting for JSON files
+  Plug 'taohex/lightline-buffer'                                    " Buffer-bar plugin for lightline
+  Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
   Plug 'edkolev/tmuxline.vim'
-  Plug 'itchyny/lightline.vim'
+  Plug 'itchyny/lightline.vim'                                      " Lightweight statusline without slow plugin integrations
   Plug 'shinchu/lightline-gruvbox.vim'
-  Plug 'ryanoasis/vim-devicons'
+  Plug 'ryanoasis/vim-devicons'                                     " For file icons in lots of plugins
 
-  " File Navigation
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'yuki-ycino/fzf-preview.vim'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'justinmk/vim-dirvish' "Directory viewer for Vim
-  Plug 'kristijanhusak/vim-dirvish-git'
-  Plug 'bogado/file-line' "Open a file in a given line
+  " Behaviour/tools
+  Plug 'ludovicchabant/vim-gutentags'                               " Automatically create ctag files
+  Plug 'romainl/vim-qf'                                             " Automatically close quickfix windows that become orphaned
+  Plug 'tpope/vim-repeat'                                           " Add repeat support with '.' for lots of plugins
+  Plug 'wakatime/vim-wakatime'                                      " Automatic timetracking of programming [wakatime.com]
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-rsi'
-  Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-speeddating'
-  Plug 'tpope/vim-repeat'
-  Plug 'unblevable/quick-scope' "Lightning fast left-right movement in Vim
+
+  " File Navigation
+  Plug 'cskeeters/vim-smooth-scroll'                                " Smooth scroll animation instead of jump
+  Plug 'christoomey/vim-tmux-navigator'                             " Navigate between tmux and vim with <C>+jkhl
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file++ searching
+  Plug 'junegunn/fzf.vim'                                           " Asynchronous file/tags searcher
+  Plug 'yuki-ycino/fzf-preview.vim'
+  Plug 'justinmk/vim-dirvish'                                       " Directory viewer for Vim
+  Plug 'kristijanhusak/vim-dirvish-git'
+  Plug 'bogado/file-line'                                           " Open a file in a given line
+  Plug 'unblevable/quick-scope'                                     " Lightning fast left-right movement in Vim
   Plug 'w0rp/ale'
   Plug 'pbrisbin/vim-mkdir'
-  Plug 'justincampbell/vim-eighties' "Automatically resizes your windows
+  Plug 'justincampbell/vim-eighties'                                " Automatically resizes your windows
   Plug 'junegunn/vim-easy-align'
   Plug 'rstacruz/vim-closer'
   Plug 'mileszs/ack.vim'
