@@ -50,4 +50,5 @@ Thumbs.db
 /bin/failing
 /bin/pending
 Session.vim
+.tool-versions
 

@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
   " Git
   Plug 'tpope/vim-git'
   Plug 'tpope/vim-fugitive'
-  Plug 'mhinz/vim-signify' "Show a diff using Vim its sign column
+  Plug 'airblade/vim-gitgutter' "Show a diff using Vim its sign column
   Plug 'junegunn/gv.vim' "A git commit browser
   Plug 'danishprakash/vim-githubinator' "Show selected text in Vim on Github
 
@@ -117,6 +117,18 @@ let g:powerline_loaded = 1
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ }
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+
+let g:gitgutter_override_sign_column_highlight = 1
+highlight SignColumn guibg=bg
+highlight SignColumn ctermbg=bg
+
+" Update sign column every quarter second
+set updatetime=250
 
 let &colorcolumn="99".join(range(99,999),",") "Ruller
 set list listchars=tab:»·,trail:· " Display extra whitespace
@@ -150,6 +162,14 @@ vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <ESC>:update<CR>l
 
 map <C-t> <esc>:tabnew<CR>
+
+" Jump between hunks
+nmap <Leader>gn <Plug>GitGutterNextHunk
+nmap <Leader>gp <Plug>GitGutterPrevHunk
+
+" Hunk-add and hunk-revert for chunk staging
+ nmap <Leader>ga <Plug>GitGutterStageHunk  " git add (chunk)
+ nmap <Leader>gu <Plug>GitGutterUndoHunk   " git undo (chunk)
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
