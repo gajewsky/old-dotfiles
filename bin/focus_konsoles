@@ -13,13 +13,13 @@ terminal_window_id = $terminal_window_id
 active_window_id = $active_window_id
 "
 
-# if [ $active_window_id == $terminal_window_id ]; then
-#   echo activating browser $MAIN_BROWSER_WINDOW_CLASSNAME
-#   xdotool windowactivate $browser_window_id
-# elif [ $active_window_id == $browser_window_id ]; then
-#   echo activating terminal $MAIN_TERMINAL_WINDOW_CLASSNAME
-#   xdotool windowactivate $terminal_window_id
-# else
-  # echo activating terminal $MAIN_TERMINAL_WINDOW_CLASSNAME
+if [ $active_window_id == $terminal_window_id ]; then
+  echo activating browser $MAIN_BROWSER_WINDOW_CLASSNAME
+  xdotool windowactivate $browser_window_id
+elif [ $active_window_id == $browser_window_id ]; then
+  echo activating terminal $MAIN_TERMINAL_WINDOW_CLASSNAME
   xdotool windowactivate $terminal_window_id
-# fi 
+else
+  echo activating terminal $MAIN_TERMINAL_WINDOW_CLASSNAME
+  xdotool windowactivate $terminal_window_id
+fi 

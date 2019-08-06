@@ -1,9 +1,10 @@
 unbind C-b
+unbind \
 set -g prefix C-x
 bind C-x send-prefix
 
 # Panes navigation
-bind -n M-\ split-window -h
+bind -n M-} split-window -h
 bind -n M-- split-window -v
 bind -n M-= select-layout even-horizontal
 bind -n M-+ select-layout even-vertical

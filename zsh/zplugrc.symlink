@@ -7,11 +7,11 @@ else
   source ~/.zplug/init.zsh
 fi
 
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "plugins/git",      from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug "tarruda/zsh-autosuggestions",            defer:1
 zplug "zsh-users/zsh-syntax-highlighting",      defer:2
-zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "tj/git-extras"
 zplug "djui/alias-tips"
 zplug "geometry-zsh/geometry"

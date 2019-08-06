@@ -35,6 +35,8 @@ compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+ZSH_THEME="common"
+
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
@@ -45,4 +47,3 @@ if [ -f /home/gajewsky/.tnsrc ]; then
 fi
 
 stty intr ^i
-

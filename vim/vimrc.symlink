@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-ruby/vim-ruby'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-endwise'
+  Plug 'AndrewRadev/splitjoin.vim'
 
   " JavaScript
   Plug 'pangloss/vim-javascript'
@@ -25,15 +26,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'wincent/vcs-jump'
   Plug 'mhinz/vim-startify'
   Plug 'elzr/vim-json', {'for': 'json'}                             " Better syntax highlighting for JSON files
-  Plug 'taohex/lightline-buffer'                                    " Buffer-bar plugin for lightline
   Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
   Plug 'edkolev/tmuxline.vim'
   Plug 'itchyny/lightline.vim'                                      " Lightweight statusline without slow plugin integrations
   Plug 'shinchu/lightline-gruvbox.vim'
   Plug 'ryanoasis/vim-devicons'                                     " For file icons in lots of plugins
+  Plug 'ap/vim-css-color'
 
   " Behaviour/tools
-  Plug 'ludovicchabant/vim-gutentags'                               " Automatically create ctag files
   Plug 'romainl/vim-qf'                                             " Automatically close quickfix windows that become orphaned
   Plug 'tpope/vim-repeat'                                           " Add repeat support with '.' for lots of plugins
   Plug 'wakatime/vim-wakatime'                                      " Automatic timetracking of programming [wakatime.com]
@@ -43,6 +43,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-speeddating'
+  Plug 'AaronLasseigne/yank-code'
 
   " File Navigation
   Plug 'cskeeters/vim-smooth-scroll'                                " Smooth scroll animation instead of jump
@@ -151,7 +152,7 @@ set diffopt+=vertical
 
 " ================ Git ===============================
 " Update sign column every quarter second
-set updatetime=250
+" set updatetime=250
 
 " Use fontawesome icons as signs
 let g:gitgutter_sign_added = ''
@@ -191,6 +192,9 @@ map <C-t> <esc>:tabnew<CR>
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+noremap H ^
+noremap L $
 
 " Re-select visual block after indenting
 vnoremap < <gv
