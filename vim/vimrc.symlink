@@ -22,6 +22,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'sheerun/vim-polyglot'                                       " Add syntax highlighting for a large range of filetypes
 
   " Visual
+  Plug 'wincent/vcs-jump'
+  Plug 'mhinz/vim-startify'
   Plug 'elzr/vim-json', {'for': 'json'}                             " Better syntax highlighting for JSON files
   Plug 'taohex/lightline-buffer'                                    " Buffer-bar plugin for lightline
   Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
@@ -137,6 +139,8 @@ noremap <up>    <C-W>+
 noremap <down>  <C-W>-
 noremap <left>  3<C-W><
 noremap <right> 3<C-W>>
+
+nmap <Leader>d <Plug>(VcsJump)
 
 set splitbelow        " new hoz splits go below
 set splitright        " new vert splits go right

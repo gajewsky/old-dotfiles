@@ -43,6 +43,6 @@ compinit
 if [ -f /home/gajewsky/.tnsrc ]; then
     source /home/gajewsky/.tnsrc
 fi
-###-tns-completion-end-###
-#
-stty `cat ~/.stty`
+
+stty intr ^i
+
